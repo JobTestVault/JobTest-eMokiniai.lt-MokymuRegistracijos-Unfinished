@@ -45,4 +45,27 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Other unused stuff
 /nbproject/
+www/vendor
+.vagrant
+/www/bin/console
+/www/bin/symfony_requirements
+
+/www/app/config/parameters.yml
+/www/build/
+/www/phpunit.xml
+/www/var/*
+!/www/var/cache
+/www/var/cache/*
+!/www/var/cache/.gitkeep
+!/www/var/logs
+/www/var/logs/*
+!/www/var/logs/.gitkeep
+!/www/var/sessions
+/www/var/sessions/*
+!/www/var/sessions/.gitkeep
+!/www/var/SymfonyRequirements.php
+/www/vendor/
+/www/web/bundles/
