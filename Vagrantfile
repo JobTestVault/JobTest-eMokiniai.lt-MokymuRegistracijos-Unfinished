@@ -23,7 +23,7 @@ Vagrant.configure(2) do |config|
 	 sudo rm -rf /etc/apache2/sites-available/000-default.conf
 	 sudo cp /vagrant/000-default.conf /etc/apache2/sites-available/000-default.conf
 	 sudo service apache2 restart
-	 #sudo mysql < /vagrant/structure.sql
+	 sudo mysql -e 'CREATE DATABASE `app`;';
 	 cd /var/www/html
 	 composer update
   SHELL
