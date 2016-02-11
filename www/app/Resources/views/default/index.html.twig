@@ -1,5 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    :)
+  <div class="row">
+    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#possible_coursies" aria-controls="possible_coursies" role="tab" data-toggle="tab">Galimi mokymai</a></li>
+      <li role="presentation"><a href="#my_coursies" aria-controls="my_coursies" role="tab" data-toggle="tab">Manieji</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="possible_coursies">
+            <div class="container">
+                {% include 'parts/courses_list.html.twig' %}
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="my_coursies">
+            <div class="container">
+                {% if app.user %}
+                    {% include 'parts/courses_list.html.twig' %}
+                {% else %}
+                    <p class="row notlogged">
+                        Turite prisijungti, norėdami pamatyti šią skiltį
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>   
+  
+  </div>
+    
 {% endblock %}

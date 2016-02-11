@@ -1,0 +1,29 @@
+{% if trainings is empty %}
+    <div class="row">
+        <p class="empty">
+            Deja, šiuo metu šis sąrašas tusčias.
+        </p>
+    </div>
+{% else %}
+    {% for training in trainings %}
+        <div class="training">
+            <h2 class="row">{{ training.getName() }}</h2>
+            <div class="row">
+                <p class="col-md-10">{{ training.getDescription() }}</p> 
+                <div class="col-md-2">                    
+                    <button class="btn {% if training.isJoined() %}btn-danger{% else %}btn-primary{% endif %}" data-role="training_switch">
+                       {% if training.isJoined() %}
+                           Nedalyvauti
+                       {% else %}
+                           Dalyvauti
+                       {% endif %}
+                    </button>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col-md-6"> <strong>Renginio data:</strong> {{ training.getStartsAt() }} </div>
+                <div class="col-md-6"> <strong>Liko vietų:</strong> <span class="places_left">{{ training.getPlacesLeft() }}</span> </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
