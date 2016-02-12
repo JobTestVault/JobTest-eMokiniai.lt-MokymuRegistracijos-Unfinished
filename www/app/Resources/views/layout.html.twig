@@ -33,20 +33,23 @@
           <a class="navbar-brand" href="{{ url('homepage') }}">Mokymai</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="E-paštas" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Slaptažodis" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Prisijungti</button>
-          </form>
+            {% include 'parts/user_block.html.twig' %}
         </div><!--/.navbar-collapse -->
       </div>
     </nav>           
 
-    <div class="container">
+    <div class="container content">
+        
+        {% block flash %}                    
+            {% for label, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    <div class="alert alert-{{ label }}">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ flash }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
         
         {% block body %}{% endblock %}
       

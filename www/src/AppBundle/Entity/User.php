@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -13,17 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User implements UserInterface {
-    
-    /**
-     * User is in registered group
-     */
-    const GROUP_USER = 1;
-    
-    /**
-     * User is in admin group
-     */
-    const GROUP_ADMIN = 2;
+class User extends BaseUser {   
 
     /**
      * @var int
@@ -32,12 +23,12 @@ class User implements UserInterface {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=100, nullable=true, unique=true)
+     * @ORM\Column(name="firstname", type="string", length=100, nullable=true, unique=false)
      * 
      * @Assert\Length(
      *      min = 2,
@@ -46,12 +37,12 @@ class User implements UserInterface {
      *      maxMessage = "Vardas turi būti ne trumpesnė nei {{ limit }} ženklų"
      * )
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=100, nullable=true, unique=true)
+     * @ORM\Column(name="lastname", type="string", length=100, nullable=true, unique=false)
      * 
      * @Assert\Length(
      *      min = 2,
@@ -60,92 +51,21 @@ class User implements UserInterface {
      *      maxMessage = "Pavardė turi būti ne trumpesnė nei {{ limit }} ženklų"
      * )
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=100, nullable=true, unique=true)
-     * 
-     * @Assert\Email(
-     *     message = "Adresas '{{ value }}' nėra tinkamas elektroninio pašto adresas!",
-     *     checkMX = true
-     * )
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true, unique=false)
      */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="phone", type="string", length=20, nullable=true, unique=true)
-     */
-    private $phone;
+    protected $phone;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $created_at;
-
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="salt", type="string", length=40)
-     */
-    private $salt;
-
-    /**
-     * @var string 
-     * 
-     * @ORM\Column(name="password", type="string", length=40)
-     */
-    private $password;
-
-    /**
-     * @var int
-     * 
-     * @ORM\Column(name="group_id", type="smallint", nullable=false)
-     */
-    private $group_id;
-
-    /**
-     * Gets roles
-     * 
-     * @return array
-     */
-    public function getRoles() {
-        switch ($this->group_id) {
-            case self::GROUP_ADMIN:
-                return ['ROLE_ADMIN'];
-            case self::GROUP_USER:
-                return ['ROLE_USER'];
-            default:
-                return [];
-        }
-    }
-    
-    /**
-     * Get group
-     * 
-     * @return int
-     */
-    public function getGroup() {
-        return $this->group_id;
-    }
-    
-    /**
-     * Set group
-     * 
-     * @param int $group
-     * 
-     * @return \AppBundle\Entity\User
-     */
-    public function setGroup($group) {
-        $this->group_id = $group;
-        
-        return $this;
-    }
+    protected $created_at;
 
     /**
      * Get id
@@ -201,28 +121,6 @@ class User implements UserInterface {
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email) {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail() {
-        return $this->email;
-    }
-
-    /**
      * Set phone
      *
      * @param string $phone
@@ -267,55 +165,6 @@ class User implements UserInterface {
     }
 
     /**
-     * Generates and updates with new salt
-     * 
-     * @return string
-     */
-    public function generateNewSalt() {
-        return $this->salt = md5(time());
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password) {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword() {
-        return $this->password;
-    }
-
-    /**
-     * Get's salt
-     * 
-     * @return string
-     */
-    public function getSalt() {
-        return $this->salt;
-    }
-
-    /**
-     * Returns the username used to authenticate the user.
-     *
-     * @return string The username
-     */
-    public function getUsername() {
-        return $this->email;
-    }
-
-    /**
      * Updates timestamps
      *
      * @ORM\PrePersist
@@ -323,15 +172,5 @@ class User implements UserInterface {
     public function updatedCreatedAt() {
         $this->setCreatedAt(new \DateTime('now'));
     }
-    
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
-    public function eraseCredentials() {
-        
-    }    
 
 }

@@ -1,0 +1,23 @@
+{% if not app.user %}
+    <div class="navbar-right">
+        <form class="navbar-form navbar-left" role="form" method="get" action="{{ url('fos_user_security_login') }}">
+            <button type="submit" class="btn btn-default navbar-btn">{{ 'action.login'|trans({}, 'messages') }}</button>
+        </form>
+        <form class="navbar-form navbar-right" role="form" method="get" action="{{ url('fos_user_registration_register') }}">
+            <button type="submit" class="btn btn-default navbar-btn">{{ 'action.register'|trans({}, 'messages') }}</button>
+        </form>    
+    </div>
+{% else %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Name</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-menu-hamburger"></i> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">{{ 'action.logout'|trans({}, 'messages') }}</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">{{ 'action.trainings'|trans({}, 'messages') }}</a></li>
+                <li><a href="#">{{ 'action.users'|trans({}, 'messages') }}</a></li>
+            </ul>
+        </li>
+    </ul>
+{% endif %}
