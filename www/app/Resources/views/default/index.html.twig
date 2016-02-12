@@ -13,20 +13,20 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="possible_coursies">
             <div class="container">
-                {% include 'parts/courses_list.html.twig' %}
+                {% include 'parts/courses_list.html.twig' with {trainings: available_trainings} %}
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="my_coursies">
             <div class="container">
                 {% if app.user %}
-                    {% include 'parts/courses_list.html.twig' %}
+                    {% include 'parts/courses_list.html.twig' with {trainings: user_trainings} %}
                 {% else %}
                     <p class="row notlogged">
                         Turite prisijungti, norėdami pamatyti šią skiltį
                     </p>
                 {% endif %}
             </div>
-        </div>
+        </div>        
     </div>   
   
   </div>

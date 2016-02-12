@@ -13,9 +13,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $training_repository = $this->getDoctrine()->getRepository('AppBundle:Training');
+        
+        $user = $this->getUser();
+        
+        $available_trainings = $training_repository->getAvailableTrainings($user);
+        $user_trainings = ($user === null)?[]:$training_repository->getMyTrainings($user);
+        
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        return $this->render('default/index.html.twig', compact('available_trainings', 'user_trainings'));
     }
 }

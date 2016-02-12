@@ -11,12 +11,12 @@
             <div class="row">
                 <p class="col-md-10">{{ training.getDescription() }}</p> 
                 <div class="col-md-2">                    
-                    <button class="btn {% if training.isJoined() %}btn-danger{% else %}btn-primary{% endif %}" data-role="training_switch">
-                       {% if training.isJoined() %}
-                           Nedalyvauti
-                       {% else %}
-                           Dalyvauti
-                       {% endif %}
+                    <button {% if not app.user %}disabled{% endif %} class="btn {% if training.isJoined() %}btn-danger{% else %}btn-primary{% endif %}" data-role="training_switch">                       
+                        {% if app.user and training.isJoined() %}
+                            Nedalyvauti
+                        {% else %}
+                            Dalyvauti
+                        {% endif %}                        
                     </button>
                 </div>
             </div>            

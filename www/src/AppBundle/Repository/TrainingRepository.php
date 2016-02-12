@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+use AppBundle\Entity\UserInTraining;
+
 /**
  * TrainingRepository
  *
@@ -10,4 +13,36 @@ namespace AppBundle\Repository;
  */
 class TrainingRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    public function getAvailableTrainings($user) {
+        $query = $this->createQueryBuilder('t')
+                     ->where('t.starts_at >= :start_at')
+                     ->setParameter('start_at', new \DateTime('now'))
+                     ->orderBy('t.starts_at', 'ASC');
+        if ($user instanceof User) {
+            $query->from('UserInTraining', 'l')
+                     ->leftJoin('l.training_id', 't')
+                     ->select('t')
+                     ->andWhere('l.user_id = :user_id')
+                     ->andWhere('l.training_id IS NULL')
+                     ->setParameter('user_id', $user->getId());
+        }
+        return $query->getQuery()->getResult();
+    }
+    
+    public function getMyTrainings(User $user) {
+        return $this->createQueryBuilder('t')
+                     ->where('t.starts_at >= :start_at')
+                     ->setParameter('start_at', new \DateTime('now'))
+                     ->orderBy('t.starts_at', 'ASC')
+                     ->from('UserInTraining', 'l')
+                     ->leftJoin('l.training_id', 't')
+                     ->select('t')
+                     ->andWhere('l.user_id = :user_id')
+                     ->andWhere('l.training_id IS NOT NULL')
+                     ->setParameter('user_id', $user->getId())
+                     ->getQuery()
+                     ->getResult();
+    }
+    
 }
