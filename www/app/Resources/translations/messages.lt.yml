@@ -1,5 +1,8 @@
-action.login: Prisijungti
-action.register: Užsiregistruoti
-action.logout: Atsijungti
-action.users: Vartotojai
-action.trainings: Mokymai
+action:
+    login: Prisijungti
+    register: Užsiregistruoti
+    logout: Atsijungti
+    users: Vartotojai
+    trainings: Mokymai
+    edit_profile: Redaguoti savo profilį
+    change_password: Keisti savo slaptažodį
