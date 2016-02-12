@@ -2,11 +2,12 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h2 class="row">
-    {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-</h2>
-
 {% block fos_user_content %}
+    
+    <h2 class="row">
+        {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+    </h2>
+    
 {% if error %}
     <div class="alert alert-danger">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

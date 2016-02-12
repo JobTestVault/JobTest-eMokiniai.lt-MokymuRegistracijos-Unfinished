@@ -5,8 +5,8 @@
     
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#possible_coursies" aria-controls="possible_coursies" role="tab" data-toggle="tab">Galimi mokymai</a></li>
-      <li role="presentation"><a href="#my_coursies" aria-controls="my_coursies" role="tab" data-toggle="tab">Manieji</a></li>
+      <li role="presentation" class="active"><a href="#possible_coursies" aria-controls="possible_coursies" role="tab" data-toggle="tab">{{ 'list.available'|trans({}, 'messages') }}</a></li>
+      <li role="presentation"><a href="#my_coursies" aria-controls="my_coursies" role="tab" data-toggle="tab">{{ 'list.my'|trans({}, 'messages') }}</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -22,7 +22,7 @@
                     {% include 'parts/courses_list.html.twig' with {trainings: user_trainings} %}
                 {% else %}
                     <p class="row notlogged">
-                        Turite prisijungti, norėdami pamatyti šią skiltį
+                        {{ 'security.must_login'|trans({}, 'messages') }}
                     </p>
                 {% endif %}
             </div>
