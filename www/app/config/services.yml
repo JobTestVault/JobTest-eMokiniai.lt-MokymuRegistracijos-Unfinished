@@ -4,6 +4,10 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.form.profile_edit:
+        class: AppBundle\Form\ProfileFormType
+        arguments: 
+            - "@security.authorization_checker"
+            - "%security.role_hierarchy.roles%"
+        tags:
+            - { name: form.type, alias: app_user_profile_edit }

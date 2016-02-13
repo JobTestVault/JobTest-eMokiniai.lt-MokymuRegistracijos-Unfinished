@@ -1,19 +1,15 @@
-action:
-    login: Prisijungti
-    register: Užsiregistruoti
-    logout: Atsijungti
-    users: Vartotojai
-    trainings: Mokymai
-    edit_profile: 'Redaguoti savo profilį'
-    change_password: 'Keisti savo slaptažodį'
-list:
-    empty: 'Deja, šiuo metu šis sąrašas tusčias.'
-    my: Mano
-    available: 'Galimi mokymai'
-training:
-    join: Dalyvauti
-    unjoin: Nedalyvauti
-    date: 'Renginio data'
-    places_left: 'Liko vietų'
-security:
-    must_login: 'Turite prisijungti, norėdami pamatyti šią skiltį'
+action.login: Prisijungti
+action.register: Užsiregistruoti
+action.logout: Atsijungti
+action.users: Vartotojai
+action.trainings: Mokymai
+action.edit_profile: 'Redaguoti savo profilį'
+action.change_password: 'Keisti savo slaptažodį'
+list.empty: 'Deja, šiuo metu šis sąrašas tusčias.'
+list.my: Mano
+list.available: 'Galimi mokymai'
+training.join: Dalyvauti
+training.unjoin: Nedalyvauti
+training.date: 'Renginio data'
+training.places_left: 'Liko vietų'
+security.must_login: 'Turite prisijungti, norėdami pamatyti šią skiltį'

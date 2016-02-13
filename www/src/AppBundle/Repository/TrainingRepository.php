@@ -20,8 +20,8 @@ class TrainingRepository extends \Doctrine\ORM\EntityRepository
                      ->setParameter('start_at', new \DateTime('now'))
                      ->orderBy('t.starts_at', 'ASC');
         if ($user instanceof User) {
-            $query->from('UserInTraining', 'l')
-                     ->leftJoin('l.training_id', 't')
+            $query->from('AppBundle\Entity\UserInTraining', 'l')
+                     ->leftJoin('l.training', 'o')
                      ->select('t')
                      ->andWhere('l.user_id = :user_id')
                      ->andWhere('l.training_id IS NULL')
@@ -35,8 +35,8 @@ class TrainingRepository extends \Doctrine\ORM\EntityRepository
                      ->where('t.starts_at >= :start_at')
                      ->setParameter('start_at', new \DateTime('now'))
                      ->orderBy('t.starts_at', 'ASC')
-                     ->from('UserInTraining', 'l')
-                     ->leftJoin('l.training_id', 't')
+                     ->from('AppBundle\Entity\UserInTraining', 'l')
+                     ->leftJoin('l.training', 'o')
                      ->select('t')
                      ->andWhere('l.user_id = :user_id')
                      ->andWhere('l.training_id IS NOT NULL')
