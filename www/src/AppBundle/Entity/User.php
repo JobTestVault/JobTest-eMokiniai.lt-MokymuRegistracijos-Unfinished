@@ -66,6 +66,13 @@ class User extends BaseUser {
      * @ORM\Column(name="created_at", type="datetime")
      */
     protected $created_at;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    protected $updated_at;
 
     /**
      * Get id
@@ -163,14 +170,46 @@ class User extends BaseUser {
     public function getCreatedAt() {
         return $this->created_at;
     }
+    
+    /**
+     * Set updated at
+     *
+     * @param \DateTime $updatedat
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedat) {
+        $this->created_at = $updatedAt;
+
+        return $this;
+    }
 
     /**
-     * Updates timestamps
+     * Get updated at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt() {
+        return $this->updated_at;
+    }    
+
+    /**
+     * Updates timestamps on insert
      *
      * @ORM\PrePersist
      */
-    public function updatedCreatedAt() {
+    public function updateOnInsert() {
         $this->setCreatedAt(new \DateTime('now'));
+        $this->setUpdatedAt(new \DateTime('now'));
+    }
+    
+    /**
+     * Updates timestamps on update
+     *
+     * @ORM\PreUpdate
+     */
+    public function updateOnUpdate() {
+        $this->setUpdatedAt(new \DateTime('now'));
     }
 
 }

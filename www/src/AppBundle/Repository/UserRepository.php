@@ -26,5 +26,14 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
                 ->getQuery()
                 ->getOneOrNullResult();
     }
+        
+    /**
+     * Gets count
+     * 
+     * @return int
+     */
+    public function count() {
+        return $this->createQueryBuilder('u')->select('count(u.*)')->getQuery()->getSingleScalarResult();
+    }
     
 }

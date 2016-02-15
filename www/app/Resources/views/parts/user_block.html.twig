@@ -19,8 +19,8 @@
                 <span class="caret"></span>
                 <ul class="dropdown-menu">                                                            
                     {% if is_granted('ROLE_ADMIN') %}                        
-                        <li><a href="#">{{ 'action.trainings'|trans({}, 'messages') }}</a></li>
-                        <li><a href="#">{{ 'action.users'|trans({}, 'messages') }}</a></li>
+                        <li><a href="{{ url('trainings') }}">{{ 'action.trainings'|trans({}, 'messages') }}</a></li>
+                        <li><a href="{{ url('users') }}">{{ 'action.users'|trans({}, 'messages') }}</a></li>
                         <li role="separator" class="divider"></li>
                     {% endif %}
                     <li><a href="{{ url('fos_user_profile_edit') }}">{{ 'action.edit_profile'|trans({}, 'messages') }}</a></li>

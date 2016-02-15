@@ -19,7 +19,6 @@ class DefaultController extends Controller {
         $available_trainings = $training_repository->getAvailableTrainings($user);
         $user_trainings = ($user === null) ? [] : $training_repository->getMyTrainings($user);       
 
-        // replace this example code with whatever you need
         return $this->render('default/index.html.twig', compact('available_trainings', 'user_trainings'));
     }
     

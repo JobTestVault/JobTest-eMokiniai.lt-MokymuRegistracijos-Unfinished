@@ -11,3 +11,13 @@ services:
             - "%security.role_hierarchy.roles%"
         tags:
             - { name: form.type, alias: app_user_profile_edit }
+    
+    app.datatable.user:
+      class: AppBundle\Datatables\UserDatatable
+      tags:
+          - { name: sg.datatable.view }
+          
+    app.datatable.training:
+      class: AppBundle\Datatables\TrainingDatatable
+      tags:
+          - { name: sg.datatable.view }

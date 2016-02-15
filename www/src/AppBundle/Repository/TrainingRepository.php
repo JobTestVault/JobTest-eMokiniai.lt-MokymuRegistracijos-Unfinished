@@ -45,4 +45,13 @@ class TrainingRepository extends \Doctrine\ORM\EntityRepository
                      ->getResult();
     }
     
+    /**
+     * Gets count
+     * 
+     * @return int
+     */
+    public function count() {
+        return $this->createQueryBuilder('u')->select('count(u.*)')->getQuery()->getSingleScalarResult();
+    }    
+    
 }
