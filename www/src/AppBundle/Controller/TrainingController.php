@@ -6,10 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("/trainings")
+ */
 class TrainingController extends Controller {        
 
     /**
-     * @Route("/trainings/{page}/{limit}", name="trainings", defaults={"page": 1, "limit": 15})
+     * @Route("/{page}/{limit}", name="trainings", defaults={"page": 1, "limit": 15})
      */
     public function indexAction(Request $request, $page = 1, $limit = 15) {
         $training_repository = $this->getDoctrine()->getRepository('AppBundle:Training');

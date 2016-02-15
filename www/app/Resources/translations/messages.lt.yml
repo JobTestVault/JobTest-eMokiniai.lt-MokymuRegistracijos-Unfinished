@@ -13,3 +13,31 @@ training.unjoin: Nedalyvauti
 training.date: 'Renginio data'
 training.places_left: 'Liko vietų'
 security.must_login: 'Turite prisijungti, norėdami pamatyti šią skiltį'
+datatables.datatable.processing: Apdorojama...
+datatables.datatable.lengthMenu: 'Rodyti _MENU_ įrašų'
+datatables.datatable.zeroRecords: 'Nerasta nurodytų įrašų'
+datatables.datatable.info: 'Rodoma nuo _START_ iki _END_ iš _TOTAL_ įrašų'
+datatables.datatable.infoEmpty: 'Rodomas tusčias sąrašas ;('
+datatables.datatable.infoFiltered: '(išfiltruota iš _MAX_ galimų įrašų)'
+datatables.datatable.infoPostFix: ''
+datatables.datatable.search: Ieškoti
+datatables.datatable.first: Pirmas
+datatables.datatable.previous: Paskutinis
+datatables.datatable.next: Kitas
+datatables.datatable.last: Ankstesnis
+datatables.datatable.all: visi
+datatables.bulk.confirmMsg: 'Ar esate tikras(-a)?'
+datatables.bulk.selectError: 'Jums reikia pasirinkti bent vieną elementą.'
+datatables.bulk.ok: Gerai
+datatables.actions.title: Veiksmai
+datatables.actions.show: Rodyti
+datatables.actions.new: Naujas
+datatables.actions.edit: Redaguoti
+datatables.actions.delete: Ištrinti
+datatables.actions.toList: 'Grįžti į sąrašą'
+datatables.actions.save: Įrašyti
+datatables.dialog.close: Uždaryti
+daterange.apply: Pritaikyti
+daterange.cancel: Nutraukti
+daterange.format: 'YYYY MM DD'
+editable.tableRedraw: 'Pakeitimai yra susiję su keliais įrašais. Lentelė bus perpiešta.'

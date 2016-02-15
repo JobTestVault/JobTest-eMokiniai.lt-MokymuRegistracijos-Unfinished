@@ -21,7 +21,7 @@ class UserDatatable extends AbstractDatatableView
             'start_html' => '<div class="row"><div class="col-sm-3">',
             'end_html' => '<hr></div></div>',
             'actions' => array(
-                array(
+                /*array(
                     'route' => $this->router->generate('user_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
@@ -31,7 +31,7 @@ class UserDatatable extends AbstractDatatableView
                         'class' => 'btn btn-primary',
                         'role' => 'button'
                     ),
-                )
+                )*/
             )
         ));
 
@@ -102,20 +102,6 @@ class UserDatatable extends AbstractDatatableView
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
-                    array(
-                        'route' => 'user_show',
-                        'route_parameters' => array(
-                            'id' => 'id'
-                        ),
-                        'label' => $this->translator->trans('datatables.actions.show'),
-                        'icon' => 'glyphicon glyphicon-eye-open',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.show'),
-                            'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
-                        ),
-                    ),
                     array(
                         'route' => 'user_edit',
                         'route_parameters' => array(

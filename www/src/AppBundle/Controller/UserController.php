@@ -6,21 +6,38 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class UserController extends Controller {        
+/**
+ * @Route("/users")
+ */
+class UserController extends Controller {
 
     /**
-     * @Route("/users/{page}/{limit}", name="users", defaults={"page": 1, "limit": 15})
+     * @Route("/", name="users", options={"expose"=true})
      */
-    public function indexAction(Request $request, $page = 1, $limit = 15) {
-        $user_repository = $this->getDoctrine()->getRepository('AppBundle:User');
-         
-        $count = $user_repository->count();
-        $pages = ceil($count / $limit);
-        $offset = ($page - 1) * $limit;
+    public function indexAction(Request $request) {
+        $datatable = $this->get('app.datatable.user');
+        $datatable->buildDatatable();
+
+        return $this->render('user/index.html.twig', compact('datatable'));
+    }
+
+    /**
+     * @Route("/results", name="user_results", options={"expose"=true})
+     */
+    public function resultsAction(Request $request) {
+        $datatable = $this->get('app.datatable.user');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
+    }
+    
+     /**
+     * @Route("/edit/{id}", name="user_edit", options={"expose"=true})
+     */
+    public function editAction(Request $request, $id) { 
         
-        $items = $user_repository->findBy([], null, $limit, $offset);
-        
-        return $this->render('user/index.html.twig', compact('page', 'limit', 'pages', 'items'));
     }
     
     
