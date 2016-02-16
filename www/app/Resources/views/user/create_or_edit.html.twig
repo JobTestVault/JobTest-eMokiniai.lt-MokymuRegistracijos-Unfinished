@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}     
+
+    <h2 class="row">
+        {% if mode == 'create' %}
+            {{ 'title.user.create'|trans({}, 'messages') }}
+        {% else %}
+            {{ 'title.user.edit'|trans({}, 'messages') }}
+        {% endif %}
+    </h2>
+
+    {{ form_start(form, { 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_widget(form) }}
+        <div class="form-group">
+            {% if mode == 'create' %}
+                <input type="submit" class="btn btn-default" value="{{ 'user.create.submit'|trans({}, 'messages') }}" />            
+            {% else %}
+                <input type="submit" class="btn btn-default" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+            {% endif %}
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

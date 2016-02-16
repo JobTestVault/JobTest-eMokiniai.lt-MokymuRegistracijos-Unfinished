@@ -18,22 +18,24 @@ class UserDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-3">',
-            'end_html' => '<hr></div></div>',
+            'start_html' => '<h2>' . $this->translator->trans('page.users') . ' ',
+            'end_html' => '</h2>',
             'actions' => array(
-                /*array(
+                array(
                     'route' => $this->router->generate('user_new'),
                     'label' => $this->translator->trans('datatables.actions.new'),
                     'icon' => 'glyphicon glyphicon-plus',
                     'attributes' => array(
                         'rel' => 'tooltip',
                         'title' => $this->translator->trans('datatables.actions.new'),
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary pull-right',
                         'role' => 'button'
                     ),
-                )*/
+                )
             )
         ));
+        
+        
 
         $this->features->set(array(
             'auto_width' => true,

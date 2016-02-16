@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Training
@@ -26,6 +28,13 @@ class Training
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=true, unique=true)
+     * 
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 100,
+     *      minMessage = "Pavadinimas turi turėti bent {{ limit }} simbolius",
+     *      maxMessage = "Pavadinimas turi būti ne trumpesnė nei {{ limit }} ženklų"
+     * )
      */
     private $name;
 
@@ -33,6 +42,12 @@ class Training
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 100,
+     *      minMessage = "Aprašymas turi turėti bent {{ limit }} simbolius",
+     *      maxMessage = "Aprašymas turi būti ne trumpesnė nei {{ limit }} ženklų"
+     * )
      */
     private $description;
 
@@ -61,6 +76,7 @@ class Training
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $created_at;
 

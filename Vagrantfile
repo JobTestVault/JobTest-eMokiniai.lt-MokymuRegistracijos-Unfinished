@@ -14,7 +14,9 @@ Vagrant.configure(2) do |config|
 	config.vm.synced_folder "www", "/var/www/html"
 
 	config.vm.provider "virtualbox" do |v|
-	  v.memory = 2048
+		v.memory = 2048
+		v.cpus = 2
+		v.customize ["modifyvm", :id, "--ioapic", "on"  ]
 	end
 
 	config.vm.provision "shell", inline: <<-SHELL	 

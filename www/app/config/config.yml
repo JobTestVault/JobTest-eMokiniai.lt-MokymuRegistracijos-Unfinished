@@ -41,7 +41,7 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    cache:  false    
+    # cache:  false    
     form_themes:
         - bootstrap_3_layout.html.twig
 
@@ -65,7 +65,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        auto_mapping: true      
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -82,3 +82,6 @@ fos_user:
     profile:
         form:
             type: AppBundle\Form\ProfileFormType
+            
+stof_doctrine_extensions:
+    default_locale: lt_LT

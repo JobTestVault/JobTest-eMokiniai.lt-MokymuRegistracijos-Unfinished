@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * User
@@ -64,13 +65,15 @@ class User extends BaseUser {
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     protected $created_at;
     
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
      */
     protected $updated_at;
 
@@ -158,7 +161,6 @@ class User extends BaseUser {
      */
     public function setCreatedAt($createdAt) {
         $this->created_at = $createdAt;
-
         return $this;
     }
 
@@ -191,25 +193,36 @@ class User extends BaseUser {
      */
     public function getUpdatedAt() {
         return $this->updated_at;
-    }    
-
-    /**
-     * Updates timestamps on insert
-     *
-     * @ORM\PrePersist
-     */
-    public function updateOnInsert() {
-        $this->setCreatedAt(new \DateTime('now'));
-        $this->setUpdatedAt(new \DateTime('now'));
     }
     
     /**
-     * Updates timestamps on update
-     *
-     * @ORM\PreUpdate
+     * Use same email as username if needed
+     * 
+     * @param string $email     Email to set
+     * 
+     * @return User
      */
-    public function updateOnUpdate() {
-        $this->setUpdatedAt(new \DateTime('now'));
+    public function setEmail($email) {
+        if (!$this->getUsername()) {
+            $this->setUsername($email);
+        }
+        
+        return parent::setEmail($email);
+    }
+    
+    /**
+     * Use same canonical email as username if needed
+     * 
+     * @param string $emailCanonical     Email to set
+     * 
+     * @return User
+     */
+    public function setEmailCanonical($emailCanonical) {        
+        if (!$this->getUsernameCanonical()) {
+            $this->setUsernameCanonical($emailCanonical);
+        }
+        
+        return parent::setEmailCanonical($emailCanonical);
     }
 
 }

@@ -41,3 +41,15 @@ daterange.apply: Pritaikyti
 daterange.cancel: Nutraukti
 daterange.format: 'YYYY MM DD'
 editable.tableRedraw: 'Pakeitimai yra susiję su keliais įrašais. Lentelė bus perpiešta.'
+page.users: Vartotojai
+title.user.create: 'Sukurti vartotoją'
+title.user.edit: 'Redaguoti vartotoją'
+Firstname: Vardas
+Lastname: Pavardė
+Phone: Telefonas
+Roles: Teisės
+User: Vartotojas
+Admin: Administratorius
+'Super Admin': 'Vyr. Administratorius'
+user.create.submit: 'Sukurti vartotoją'
+user.saved: 'Vartotojas išsaugotas'

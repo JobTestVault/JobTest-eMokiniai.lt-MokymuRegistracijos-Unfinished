@@ -16,3 +16,15 @@
 .nav-tabs {
     margin-bottom: 0;
 }
+
+.paginate_button {
+	padding-left: 1em;
+}
+
+.dataTables_length {
+	display: inline;
+}
+
+.dataTables_filter {
+	float: right;
+}
