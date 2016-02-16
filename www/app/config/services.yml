@@ -20,4 +20,4 @@ services:
     app.datatable.training:
       class: AppBundle\Datatables\TrainingDatatable
       tags:
-          - { name: sg.datatable.view }
+          - { name: sg.datatable.view }               

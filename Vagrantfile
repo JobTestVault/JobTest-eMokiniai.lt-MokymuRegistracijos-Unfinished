@@ -21,6 +21,8 @@ Vagrant.configure(2) do |config|
 
 	config.vm.provision "shell", inline: <<-SHELL	 
 		sudo apt-get update
+		sudo DEBIAN_FRONTEND=noninteractive do-release-upgrade -f DistUpgradeViewNonInteractive
+		sudo apt-get update
 		sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q --force-yes upgrade
 		sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --force-yes apache2 mysql-server php5 mc php5-json curl memcached php5-mysql
 		sudo curl -sS https://getcomposer.org/installer | php	 

@@ -18,8 +18,8 @@ class TrainingDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-3">',
-            'end_html' => '<hr></div></div>',
+            'start_html' => '<h2>' . $this->translator->trans('page.users') . ' ',
+            'end_html' => '</h2>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('training_new'),
