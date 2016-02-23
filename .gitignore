@@ -50,8 +50,6 @@ Temporary Items
 /nbproject/
 www/vendor
 .vagrant
-/www/bin/console
-/www/bin/symfony_requirements
 
 /www/build/
 /www/phpunit.xml
