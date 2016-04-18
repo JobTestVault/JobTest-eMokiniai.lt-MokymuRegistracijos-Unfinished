@@ -1,3 +1,4 @@
+[![License](https://img.shields.io/github/license/MekDrop/JobTest-eMokiniai.lt-MokymuRegistracijos-Unfinished.svg?maxAge=2592000)](License.txt) ![GitHub release](https://img.shields.io/github/release/MekDrop/JobTest-eMokiniai.lt-MokymuRegistracijos-Unfinished.svg?maxAge=2592000)
 # What is this?
 
 A simple courses registration system in Lithuanian written in Symfony framework.
